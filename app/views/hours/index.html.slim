@@ -1,0 +1,31 @@
+h1 Listing hours
+
+table
+  thead
+    tr
+      th User
+      th Project
+      th Hourtype
+      th Start time
+      th End time
+      th Descrtiption
+      th
+      th
+      th
+
+  tbody
+    - @hours.each do |hour|
+      tr
+        td = hour.user
+        td = hour.project
+        td = hour.hourtype
+        td = hour.start_time
+        td = hour.end_time
+        td = hour.descrtiption
+        td = link_to 'Show', hour
+        td = link_to 'Edit', edit_hour_path(hour)
+        td = link_to 'Destroy', hour, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Hour', new_hour_path

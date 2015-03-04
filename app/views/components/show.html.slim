@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong Invoice:
+  = @component.invoice
+p
+  strong Price:
+  = @component.price
+p
+  strong Name:
+  = @component.name
+p
+  strong Description:
+  = @component.description
+p
+  strong Amount:
+  = @component.amount
+p
+  strong Custom price:
+  = @component.custom_price
+p
+  strong Custom taxpercentage:
+  = @component.custom_taxpercentage
+
+= link_to 'Edit', edit_component_path(@component)
+'|
+= link_to 'Back', components_path

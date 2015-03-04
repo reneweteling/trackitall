@@ -1,0 +1,24 @@
+p#notice = notice
+
+p
+  strong User:
+  = @hour.user
+p
+  strong Project:
+  = @hour.project
+p
+  strong Hourtype:
+  = @hour.hourtype
+p
+  strong Start time:
+  = @hour.start_time
+p
+  strong End time:
+  = @hour.end_time
+p
+  strong Descrtiption:
+  = @hour.descrtiption
+
+= link_to 'Edit', edit_hour_path(@hour)
+'|
+= link_to 'Back', hours_path

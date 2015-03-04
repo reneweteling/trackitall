@@ -1,0 +1,18 @@
+= form_for @hourtype do |f|
+  - if @hourtype.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@hourtype.errors.count, "error")} prohibited this hourtype from being saved:"
+      ul
+        - @hourtype.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :billable
+    = f.check_box :billable
+  .field
+    = f.label :price
+    = f.text_field :price
+  .actions = f.submit

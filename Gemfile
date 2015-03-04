@@ -4,9 +4,9 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'mysql2'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -23,6 +23,33 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# use slim templates
+gem "slim-rails"
+
+# bootstrap
+gem 'bootstrap-sass', '~> 3.3.3'
+# easily create bootstrap forms
+gem 'bootstrap_form'
+
+
+# select country ( dep of active admin )
+gem 'country_select'
+# user login dep op Active admin
+# gem 'devise'
+
+gem 'activeadmin', github: 'activeadmin'
+
+# gem 'inherited_resources', github: 'josevalim/inherited_resources', branch: 'rails-4-2'
+
+# ckeeditor
+gem 'ckeditor'
+
+# for uploading files with cke
+gem 'carrierwave'
+gem 'mini_magick'
+
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -32,14 +59,38 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+group :development do
+	gem 'xray-rails'
 
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  gem 'sass-rails-source-maps', github: 'vhyza/sass-rails-source-maps', branch: 'sass-rails-5.0.0.beta1'
+	gem 'coffee-rails-source-maps'
+
+  gem 'pry-rails'
+
+  # schema to scaffold
+  gem 'schema_to_scaffold'
+
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # rails panel
+  gem 'meta_request'
+
+  # live reload
+  gem 'guard-livereload', require: false
+
+  # dont show assets
+  gem 'quiet_assets'
+
+end
+
+group :development, :test do
+  # # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  # gem 'byebug'
+
+  # # Access an IRB console on exception pages or by using <%= console %> in views
+  # gem 'web-console', '~> 2.0'
+
 end
 

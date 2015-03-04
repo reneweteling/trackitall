@@ -1,0 +1,27 @@
+p#notice = notice
+
+p
+  strong Address:
+  = @user.address
+p
+  strong Invoice address:
+  = @user.invoice_address
+p
+  strong Company:
+  = @user.company
+p
+  strong Name:
+  = @user.name
+p
+  strong Firstname:
+  = @user.firstname
+p
+  strong Lastname:
+  = @user.lastname
+p
+  strong Email:
+  = @user.email
+
+= link_to 'Edit', edit_user_path(@user)
+'|
+= link_to 'Back', users_path

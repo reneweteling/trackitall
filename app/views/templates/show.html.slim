@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @template.name
+p
+  strong Descrtiption:
+  = @template.descrtiption
+p
+  strong User:
+  = @template.user
+p
+  strong Template:
+  = @template.template
+
+= link_to 'Edit', edit_template_path(@template)
+'|
+= link_to 'Back', templates_path

@@ -1,0 +1,33 @@
+h1 Listing components
+
+table
+  thead
+    tr
+      th Invoice
+      th Price
+      th Name
+      th Description
+      th Amount
+      th Custom price
+      th Custom taxpercentage
+      th
+      th
+      th
+
+  tbody
+    - @components.each do |component|
+      tr
+        td = component.invoice
+        td = component.price
+        td = component.name
+        td = component.description
+        td = component.amount
+        td = component.custom_price
+        td = component.custom_taxpercentage
+        td = link_to 'Show', component
+        td = link_to 'Edit', edit_component_path(component)
+        td = link_to 'Destroy', component, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Component', new_component_path

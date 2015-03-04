@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Name:
+  = @hourtype.name
+p
+  strong Billable:
+  = @hourtype.billable
+p
+  strong Price:
+  = @hourtype.price
+
+= link_to 'Edit', edit_hourtype_path(@hourtype)
+'|
+= link_to 'Back', hourtypes_path

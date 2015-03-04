@@ -1,0 +1,30 @@
+p#notice = notice
+
+p
+  strong User:
+  = @invoice.user
+p
+  strong Project:
+  = @invoice.project
+p
+  strong Template:
+  = @invoice.template
+p
+  strong Invoicedate:
+  = @invoice.invoicedate
+p
+  strong Invoicenumber:
+  = @invoice.invoicenumber
+p
+  strong Concerns:
+  = @invoice.concerns
+p
+  strong Tax:
+  = @invoice.tax
+p
+  strong Total:
+  = @invoice.total
+
+= link_to 'Edit', edit_invoice_path(@invoice)
+'|
+= link_to 'Back', invoices_path

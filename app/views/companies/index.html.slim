@@ -1,0 +1,35 @@
+h1 Listing companies
+
+table
+  thead
+    tr
+      th Address
+      th Name
+      th Telephone
+      th Website
+      th Email
+      th Commerceno
+      th Taxno
+      th Iban
+      th
+      th
+      th
+
+  tbody
+    - @companies.each do |company|
+      tr
+        td = company.address
+        td = company.name
+        td = company.telephone
+        td = company.website
+        td = company.email
+        td = company.commerceno
+        td = company.taxno
+        td = company.iban
+        td = link_to 'Show', company
+        td = link_to 'Edit', edit_company_path(company)
+        td = link_to 'Destroy', company, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Company', new_company_path
