@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  company_id: 
-  name: MyString
-  descrtiption: MyString
+  id: 1
+  company_id: 1
+  name: Building TrackItAll
+  descrtiption: Building a tracker for all sorts of things
 
 two:
-  company_id: 
-  name: MyString
-  descrtiption: MyString
+  id: 2
+  company_id: 1
+  name: Building TrackItAll app
+  descrtiption: Building the app fos osx

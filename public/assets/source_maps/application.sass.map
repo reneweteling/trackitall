@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAeQ,sBAAS;;AAEjB,IAAI;EACF,WAAW,EAAE,IAAI;;EAEjB,sBAAiB;IACf,OAAO,EAAE,SAAS;IAClB,UAAU,EAAE,MAAM",
+"mappings": "AAgBQ,sBAAS;;AAEjB,IAAI;EACF,WAAW,EAAE,IAAI;;EAEjB,sBAAiB;IACf,OAAO,EAAE,SAAS;IAClB,UAAU,EAAE,MAAM",
 "sources": ["/assets/source_maps/application.sass"],
 "names": [],
 "file": "../../../application"

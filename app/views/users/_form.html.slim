@@ -1,4 +1,4 @@
-= form_for @user do |f|
+= bootstrap_form_for @user, remote: true  do |f|
   - if @user.errors.any?
     #error_explanation
       h2 = "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
@@ -6,25 +6,12 @@
         - @user.errors.full_messages.each do |message|
           li = message
 
-  .field
-    = f.label :address
-    = f.text_field :address
-  .field
-    = f.label :invoice_address
-    = f.text_field :invoice_address
-  .field
-    = f.label :company
-    = f.text_field :company
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :firstname
-    = f.text_field :firstname
-  .field
-    = f.label :lastname
-    = f.text_field :lastname
-  .field
-    = f.label :email
-    = f.text_field :email
-  .actions = f.submit
+  = f.collection_select :address_id, Address.all, :id, :name, { include_blank: true }
+  = f.collection_select :invoice_address_id, Address.all, :id, :name, { include_blank: true }
+  = f.collection_select :company_id, Company.all, :id, :name, { include_blank: true }
+  = f.text_field :name 
+  = f.text_field :firstname 
+  = f.text_field :lastname 
+  = f.email_field :email 
+  = f.email_field :email_confirmation, value: @user.email
+  = f.submit "Jawel" 

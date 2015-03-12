@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: 
-  name: MyString
-  price: 9.99
-  taxpercentage: 9.99
+  id: 1
+  company_id: 1
+  name: programming
+  price: 60
+  taxpercentage: 21
 
 two:
-  user_id: 
-  name: MyString
-  price: 9.99
-  taxpercentage: 9.99
+  id: 2
+  company_id: 1
+  name: driving
+  price: 30
+  taxpercentage: 21

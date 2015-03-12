@@ -1,19 +1,28 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  address_id: 
-  invoice_address_id: 
-  company_id: 
-  name: MyString
-  firstname: MyString
-  lastname: MyString
-  email: MyString
+  id: 1
+  address_id: 1
+  invoice_address_id: 1
+  company_id: 1
+  name: Rene Weteling
+  firstname: Rene
+  lastname: Weteling
+  email: rene@weteling.com
+  admin: true
+  encrypted_password: <%= BCrypt::Password.create("test1234", cost: 4) %>
+  remember_token: <%= Clearance::Token.new %>
 
 two:
-  address_id: 
-  invoice_address_id: 
-  company_id: 
-  name: MyString
-  firstname: MyString
-  lastname: MyString
-  email: MyString
+  id: 2
+  address_id: 2
+  invoice_address_id: 2
+  company_id: 1
+  name: Emile Bosch
+  firstname: Emile
+  lastname: Bosch
+  email: emilebosch@me.com
+  admin: true
+  encrypted_password: <%= BCrypt::Password.create("test1234", cost: 4) %>
+  remember_token: <%= Clearance::Token.new %>
+

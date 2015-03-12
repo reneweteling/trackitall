@@ -1,31 +1,35 @@
-h1 Listing hours
+h2 Hours
 
-table
+a href=new_hour_path
+  'New hour
+
+table.table
   thead
     tr
-      th User
+      th #
+      th Company
       th Project
-      th Hourtype
-      th Start time
-      th End time
-      th Descrtiption
-      th
-      th
-      th
-
+      th Date
+      th start
+      th end
+      th time
+      th description
+      th 
+      th 
   tbody
-    - @hours.each do |hour|
+    - @hours.each do |h|
       tr
-        td = hour.user
-        td = hour.project
-        td = hour.hourtype
-        td = hour.start_time
-        td = hour.end_time
-        td = hour.descrtiption
-        td = link_to 'Show', hour
-        td = link_to 'Edit', edit_hour_path(hour)
-        td = link_to 'Destroy', hour, data: {:confirm => 'Are you sure?'}, :method => :delete
-
-br
-
-= link_to 'New Hour', new_hour_path
+        td =h.id
+        td =h.project.company
+        td =h.project
+        td =l h.start_time.to_date
+        td =h.start_time.strftime("%H:%M")
+        td =h.end_time.strftime("%H:%M") if h.end_time
+        td =humanize( h.end_time - h.start_time ) if h.end_time
+        td =h.description
+        td 
+          a href=edit_hour_path(h)
+            span.glyphicon.glyphicon-edit
+        td =link_to h, data: {:confirm => 'Are you sure?'}, :method => :delete do 
+          span.glyphicon.glyphicon-remove-circle
+        

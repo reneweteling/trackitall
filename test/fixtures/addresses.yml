@@ -1,21 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  address1: MyString
-  address2: MyString
-  address3: MyString
-  country_id: 
-  state_province_region: MyString
-  city_town: MyString
-  zip_postal: MyString
+  id: 1
+  name: Werk
+  address1: Herengracht 504
+  address2: 
+  address3: 
+  country: NL
+  state_province_region: Noord-holland
+  city_town: Amsterdam
+  zip_postal: 1017CB
 
 two:
-  name: MyString
-  address1: MyString
-  address2: MyString
-  address3: MyString
-  country_id: 
-  state_province_region: MyString
-  city_town: MyString
-  zip_postal: MyString
+  id: 2
+  name: Thuis
+  address1: Spaarndammerdijk 203
+  address2: 
+  address3: 
+  country: NL
+  state_province_region: Noord-holland
+  city_town: Amsterdam
+  zip_postal: 1013ZX

@@ -1,3 +1,4 @@
 class Address < ActiveRecord::Base
-  belongs_to :country
+	include Default_name
+  
 end

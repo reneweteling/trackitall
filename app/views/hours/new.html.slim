@@ -1,5 +1,7 @@
-h1 New hour
-
-== render 'form'
-
-= link_to 'Back', hours_path
+= bootstrap_form_for @hour  do |f|
+  = f.collection_select :project_id, current_user.projects, :id, :name, { include_blank: true }
+  = f.collection_select :hourtype_id, current_user.hourtypes, :id, :name, { include_blank: true }
+  = f.datetime_local_field :start_time 
+  = f.datetime_local_field :end_time 
+  = f.text_field :description 
+  = f.submit "Save"

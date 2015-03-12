@@ -1,0 +1,16 @@
+= bootstrap_form_for :session, :url => session_path do |f|
+  = f.email_field :email
+  = f.password_field :password
+  = f.submit "Sign in" 
+
+  - if Clearance.configuration.allow_sign_up?
+    a.btn.btn-default type="button" href=sign_up_path 
+      = t('.sign_up')
+  
+  a.btn.btn-default type="button" href=new_password_path 
+    = t('.forgot_password')
+
+  
+
+
+

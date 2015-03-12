@@ -22,5 +22,7 @@ test:
   database: 'trackitall_test'
 
 production:
-  <<: *default
   database: 'trackitall'
+  adapter: postgresql
+  pool: 5
+  timeout: 5000

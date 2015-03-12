@@ -1,5 +1,15 @@
-h1 New user
+= bootstrap_form_for @user do |f|
+  = f.collection_select :address_id, Address.all, :id, :name, { include_blank: true }
+  = f.collection_select :invoice_address_id, Address.all, :id, :name, { include_blank: true }
+  = f.collection_select :company_id, Company.all, :id, :name, { include_blank: true }
+  = f.text_field :name 
+  = f.text_field :firstname 
+  = f.text_field :lastname 
+  = f.email_field :email 
+  = f.email_field :email_confirmation, value: @user.email
+  = f.password_field :password
 
-== render 'form'
 
-= link_to 'Back', users_path
+  = f.submit t('.sign_up')
+  a.btn.btn-default type="button" href=sign_in_path 
+    = t('.sign_in')
