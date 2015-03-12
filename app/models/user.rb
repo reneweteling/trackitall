@@ -21,8 +21,4 @@ class User < ActiveRecord::Base
 	validates :lastname, presence: true, length: { maximum: 256, minimum: 5 }
 	validates :email, confirmation: true
 
-
-	def wtf
-		
-	end
 end
