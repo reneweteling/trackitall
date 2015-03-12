@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20150312102818) do
   create_table "hourtypes", force: :cascade do |t|
     t.string   "name",       limit: 256
     t.integer  "company_id", limit: 4
-    t.boolean  "billable",   limit: 1,   default: true
+    t.boolean  "billable",   default: true
     t.integer  "price_id",   limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -104,8 +104,8 @@ ActiveRecord::Schema.define(version: 20150312102818) do
     t.integer  "template_id",   limit: 4
     t.datetime "invoicedate"
     t.integer  "invoicenumber", limit: 4
-    t.boolean  "credit",        limit: 1,                    default: false, null: false
-    t.boolean  "locked",        limit: 1,                    default: false, null: false
+    t.boolean  "credit",        default: false, null: false
+    t.boolean  "locked",        default: false, null: false
     t.string   "concerns",      limit: 256
     t.decimal  "tax",                         precision: 16
     t.decimal  "total",                       precision: 16
@@ -162,7 +162,7 @@ ActiveRecord::Schema.define(version: 20150312102818) do
     t.string   "encrypted_password", limit: 128
     t.string   "confirmation_token", limit: 128
     t.string   "remember_token",     limit: 128
-    t.boolean  "admin",              limit: 1,   default: false, null: false
+    t.boolean  "admin",              default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
