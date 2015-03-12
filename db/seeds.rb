@@ -19,4 +19,5 @@ require 'active_record/fixtures'
 	a.sub! '.yml', ''
 }
 
+@fixtures = @fixtures.sort
 ActiveRecord::FixtureSet.create_fixtures(@dir, @fixtures)
