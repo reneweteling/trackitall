@@ -20,4 +20,10 @@ require 'active_record/fixtures'
 }
 
 @fixtures = @fixtures.sort
-ActiveRecord::FixtureSet.create_fixtures(@dir, @fixtures)
+
+ActiveRecord::Base.connection.transaction do
+	ActiveRecord::Base.connection.execute "SET CONSTRAINTS ALL DEFERRED"
+	ActiveRecord::FixtureSet.create_fixtures(@dir, @fixtures)
+end
+
+
