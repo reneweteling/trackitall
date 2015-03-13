@@ -27,7 +27,7 @@ ActiveRecord::Base.connection.transaction do
 		ActiveRecord::Base.connection.execute "ALTER TABLE #{t} disable trigger USER;"
 	end
 	# import fixtures
-	ActiveRecord::FixtureSet.create_fixtures(@dir, @fixtures)
+	# ActiveRecord::FixtureSet.create_fixtures(@dir, @fixtures)
 	# re-enable foreign key checks
 	@fixtures.each do |t| 
 		ActiveRecord::Base.connection.execute "ALTER TABLE #{t} enable trigger USER;"
