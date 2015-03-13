@@ -3,10 +3,10 @@ ul
     li = message
 
 
-= bootstrap_form_for @hour, url: hours_path, layout: :horizontal  do |f|
+= bootstrap_form_for @hour, layout: :horizontal  do |f|
   = f.collection_select :project_id, current_user.projects, :id, :name, { include_blank: true }
   = f.collection_select :hourtype_id, current_user.hourtypes, :id, :name, { include_blank: true }
   = f.text_field :start_time, { class: 'datetimepicker' } 
-  = f.time_select :end_time
-  = f.text_field :description, wrapper: { class: 'has-warning', data: { foo: 'bar' } } 
+  = f.text_field :end_time, { class: 'datetimepicker' } 
+  = f.text_field :description
   = f.submit "Save"
