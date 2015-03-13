@@ -24,14 +24,17 @@ require 'active_record/fixtures'
 ActiveRecord::Base.connection.transaction do
 	# dis-enable foreign key checks
 	@fixtures.each do |t| 
-		ActiveRecord::Base.connection.execute "ALTER TABLE #{t} disable trigger all;"
+		ActiveRecord::Base.connection.execute "ALTER TABLE #{t} disable trigger USER;"
 	end
 	# import fixtures
 	ActiveRecord::FixtureSet.create_fixtures(@dir, @fixtures)
 	# re-enable foreign key checks
 	@fixtures.each do |t| 
-		ActiveRecord::Base.connection.execute "ALTER TABLE #{t} enable trigger all;"
+		ActiveRecord::Base.connection.execute "ALTER TABLE #{t} enable trigger USER;"
 	end
 end
+
+
+
 
 
