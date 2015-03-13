@@ -22,8 +22,16 @@ require 'active_record/fixtures'
 @fixtures = @fixtures.sort
 
 ActiveRecord::Base.connection.transaction do
-	ActiveRecord::Base.connection.execute "SET CONSTRAINTS ALL DEFERRED"
+	# dis-enable foreign key checks
+	@fixtures.each do |t| 
+		ActiveRecord::Base.connection.execute "ALTER TABLE #{t} disable trigger all;"
+	end
+	# import fixtures
 	ActiveRecord::FixtureSet.create_fixtures(@dir, @fixtures)
+	# re-enable foreign key checks
+	@fixtures.each do |t| 
+		ActiveRecord::Base.connection.execute "ALTER TABLE #{t} enable trigger all;"
+	end
 end
 
 
