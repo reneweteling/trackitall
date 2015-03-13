@@ -6,11 +6,12 @@ class User < ActiveRecord::Base
   
   belongs_to :address
   belongs_to :invoice_address, :class_name => "Address", :foreign_key => "invoice_address_id"
-  belongs_to :company
+  has_many :usercompany
+  has_many :companies, through: :usercompany
   has_many :hours
-  has_many :projects, through: :company
-  has_many :hourtypes, through: :company
-  has_many :prices, through: :company
+  has_many :projects, through: :companies
+  has_many :hourtypes, through: :companies
+  has_many :prices, through: :companies
 
 
 	# validates :address_id, numericality: true

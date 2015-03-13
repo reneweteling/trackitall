@@ -4,7 +4,6 @@ one:
   id: 1
   address_id: 1
   invoice_address_id: 1
-  company_id: 1
   name: Rene Weteling
   firstname: Rene
   lastname: Weteling
@@ -17,7 +16,6 @@ two:
   id: 2
   address_id: 2
   invoice_address_id: 2
-  company_id: 1
   name: Emile Bosch
   firstname: Emile
   lastname: Bosch

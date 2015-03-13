@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150312102818) do
+ActiveRecord::Schema.define(version: 20150313081023) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace",     limit: 255
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20150312102818) do
   create_table "hourtypes", force: :cascade do |t|
     t.string   "name",       limit: 256
     t.integer  "company_id", limit: 4
-    t.boolean  "billable",   default: true
+    t.boolean  "billable",   limit: 1,   default: true
     t.integer  "price_id",   limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -100,12 +100,13 @@ ActiveRecord::Schema.define(version: 20150312102818) do
 
   create_table "invoices", force: :cascade do |t|
     t.integer  "user_id",       limit: 4
+    t.integer  "company_id",    limit: 4
     t.integer  "project_id",    limit: 4
     t.integer  "template_id",   limit: 4
     t.datetime "invoicedate"
     t.integer  "invoicenumber", limit: 4
-    t.boolean  "credit",        default: false, null: false
-    t.boolean  "locked",        default: false, null: false
+    t.boolean  "credit",        limit: 1,                    default: false, null: false
+    t.boolean  "locked",        limit: 1,                    default: false, null: false
     t.string   "concerns",      limit: 256
     t.decimal  "tax",                         precision: 16
     t.decimal  "total",                       precision: 16
@@ -118,6 +119,7 @@ ActiveRecord::Schema.define(version: 20150312102818) do
   add_index "invoices", ["project_id"], name: "index_invoices_on_project_id", using: :btree
   add_index "invoices", ["template_id"], name: "index_invoices_on_template_id", using: :btree
   add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
+  add_index "invoices", ["company_id"]
 
   create_table "prices", force: :cascade do |t|
     t.integer  "company_id",    limit: 4
@@ -143,18 +145,27 @@ ActiveRecord::Schema.define(version: 20150312102818) do
   create_table "templates", force: :cascade do |t|
     t.string   "name",         limit: 256
     t.string   "descrtiption", limit: 256
-    t.integer  "user_id",      limit: 4
+    t.integer  "company_id",      limit: 4
     t.text     "template",     limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "templates", ["user_id"], name: "index_templates_on_user_id", using: :btree
+  add_index "templates", ["company_id"]
+
+  create_table "usercompanies", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "company_id", limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "usercompanies", ["company_id"], name: "index_usercompanies_on_company_id", using: :btree
+  add_index "usercompanies", ["user_id"], name: "index_usercompanies_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.integer  "address_id",         limit: 4
     t.integer  "invoice_address_id", limit: 4
-    t.integer  "company_id",         limit: 4
     t.string   "name",               limit: 256
     t.string   "firstname",          limit: 256
     t.string   "lastname",           limit: 256
@@ -162,31 +173,33 @@ ActiveRecord::Schema.define(version: 20150312102818) do
     t.string   "encrypted_password", limit: 128
     t.string   "confirmation_token", limit: 128
     t.string   "remember_token",     limit: 128
-    t.boolean  "admin",              default: false, null: false
+    t.boolean  "admin",              limit: 1,   default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "users", ["address_id"], name: "index_users_on_address_id", using: :btree
-  add_index "users", ["company_id"], name: "index_users_on_company_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
   add_index "users", ["invoice_address_id"], name: "index_users_on_invoice_address_id", using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
   add_foreign_key "components", "invoices"
   add_foreign_key "components", "prices"
+  add_foreign_key "companies", "addresses"
   add_foreign_key "hours", "hourtypes"
   add_foreign_key "hours", "projects"
   add_foreign_key "hours", "users"
   add_foreign_key "hourtypes", "companies"
   add_foreign_key "hourtypes", "prices"
   add_foreign_key "invoices", "projects"
+  add_foreign_key "invoices", "companies"
   add_foreign_key "invoices", "templates"
   add_foreign_key "invoices", "users"
   add_foreign_key "prices", "companies"
   add_foreign_key "projects", "companies"
-  add_foreign_key "templates", "users"
+  add_foreign_key "templates", "companies"
+  add_foreign_key "usercompanies", "companies"
+  add_foreign_key "usercompanies", "users"
   add_foreign_key "users", "addresses"
-  add_foreign_key "users", "addresses"
-  add_foreign_key "users", "companies"
+  add_foreign_key "users", "addresses", column: :invoice_address_id
 end

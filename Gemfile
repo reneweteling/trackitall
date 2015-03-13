@@ -36,6 +36,10 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'carrierwave'
 
 
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
+
+
 
 # gem 'inherited_resources', github: 'josevalim/inherited_resources', branch: 'rails-4-2'
 
@@ -65,7 +69,7 @@ end
 
 group :development do
 	# gem 'xray-rails'
-
+	
   gem 'sass-rails-source-maps', github: 'vhyza/sass-rails-source-maps', branch: 'sass-rails-5.0.0.beta1'
 	gem 'coffee-rails-source-maps'
 
@@ -73,7 +77,6 @@ group :development do
 
   # schema to scaffold
   gem 'schema_to_scaffold'
-
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

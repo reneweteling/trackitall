@@ -4,12 +4,12 @@ one:
   id: 1
   name: Invoice template
   descrtiption: default invoice template
-  user_id: 1
+  company_id: 1
   template: TEMAPKATE
 
 two:
   id: 2
   name: Invoice remember template
   descrtiption: Default invoice templte for remembering
-  user_id: 1
+  company_id: 1
   template: MyText

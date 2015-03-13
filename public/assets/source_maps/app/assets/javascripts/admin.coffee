@@ -15,3 +15,12 @@
 
 
 
+
+
+
+$ ->
+  $('.datetimepicker').datetimepicker()
+
+
+
+
