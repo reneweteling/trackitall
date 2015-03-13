@@ -26,6 +26,6 @@ test:
 
 production:
   database: 'trackitall'
-  adapter: postgresql
+  adapter: postgresqlll
   pool: 5
   timeout: 5000

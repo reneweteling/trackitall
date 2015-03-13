@@ -7,7 +7,6 @@ table.table
   thead
     tr
       th #
-      th Company
       th Project
       th Date
       th start
@@ -20,7 +19,6 @@ table.table
     - @hours.each do |h|
       tr
         td =h.id
-        td =h.project.company
         td =h.project
         td =l h.start_time.to_date
         td =h.start_time.strftime("%H:%M")

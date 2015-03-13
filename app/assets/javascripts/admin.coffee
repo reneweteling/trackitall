@@ -12,7 +12,7 @@
 #
 #= require jquery
 #= require jquery_ujs
-#= require turbolinks
+# require turbolinks
 #= require jquery
 #= require bootstrap-sprockets
 #= require moment
@@ -22,7 +22,3 @@ $ ->
   $('.datetimepicker').datetimepicker 
     format: 'YYYY-MM-DD HH:mm', 
     sideBySide: true
-
-
-
-
