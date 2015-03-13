@@ -1,5 +1,5 @@
 class Company < ActiveRecord::Base
-	include Default_name
+	include DefaultName
 
   belongs_to :address
   has_many :projects

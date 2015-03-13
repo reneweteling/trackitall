@@ -1,6 +1,6 @@
 require 'active_support/concern'
 
-module Default_name
+module DefaultName
   extend ActiveSupport::Concern
   
   included do

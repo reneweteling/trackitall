@@ -1,4 +1,4 @@
 class Address < ActiveRecord::Base
-	include Default_name
+	include DefaultName
   
 end

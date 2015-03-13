@@ -1,4 +1,4 @@
 class Project < ActiveRecord::Base
-	include Default_name
+	include DefaultName
   belongs_to :company
 end

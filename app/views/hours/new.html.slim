@@ -6,6 +6,7 @@ ul
 = bootstrap_form_for @hour, layout: :horizontal  do |f|
   = f.collection_select :project_id, current_user.projects, :id, :name, { include_blank: true }
   = f.collection_select :hourtype_id, current_user.hourtypes, :id, :name, { include_blank: true }
+  = f.text_field :project_id, { class: 'typeahead' }
   = f.text_field :start_time, { class: 'datetimepicker' } 
   = f.text_field :end_time, { class: 'datetimepicker' } 
   = f.text_field :description
