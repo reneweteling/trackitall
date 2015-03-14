@@ -21,18 +21,27 @@ require 'active_record/fixtures'
 
 @fixtures = @fixtures.sort
 
-ActiveRecord::Base.connection.transaction do
-	# dis-enable foreign key checks
-	@fixtures.each do |t| 
-		#ActiveRecord::Base.connection.execute "ALTER TABLE #{t} disable trigger USER;"
-	end
-	# import fixtures
-	ActiveRecord::FixtureSet.create_fixtures(@dir, @fixtures)
-	# re-enable foreign key checks
-	@fixtures.each do |t| 
-		#ActiveRecord::Base.connection.execute "ALTER TABLE #{t} enable trigger USER;"
-	end
-end
+ActiveRecord::FixtureSet.create_fixtures(@dir, @fixtures)
+
+
+# records_array = ActiveRecord::Base.connection.execute("SELECT constraint_name FROM information_schema.table_constraints where constraint_name ~ 'fk_rails';")
+
+
+# ActiveRecord::Base.connection.transaction do
+
+
+
+# 	# dis-enable foreign key checks
+# 	@fixtures.each do |t| 
+# 		#ActiveRecord::Base.connection.execute "ALTER TABLE #{t} disable trigger USER;"
+# 	end
+# 	# import fixtures
+	
+# 	# re-enable foreign key checks
+# 	@fixtures.each do |t| 
+# 		#ActiveRecord::Base.connection.execute "ALTER TABLE #{t} enable trigger USER;"
+# 	end
+# end
 
 
 

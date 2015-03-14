@@ -1,33 +1,38 @@
 h2 Hours
 
-a href=new_hour_path
-  'New hour
+- @days.each do |day, table|
+  
+  b 
+    =day 
+  '&nbsp;
+  i
+    =humanize( table[:total] )
 
-table.table
-  thead
-    tr
-      th #
-      th Project
-      th Date
-      th start
-      th end
-      th time
-      th description
-      th 
-      th 
-  tbody
-    - @hours.each do |h|
+  table.table
+    thead
       tr
-        td =h.id
-        td =h.project
-        td =l h.start_time.to_date
-        td =h.start_time.strftime("%H:%M")
-        td =h.end_time.strftime("%H:%M") if h.end_time
-        td =humanize( h.end_time - h.start_time ) if h.end_time
-        td =h.description
-        td 
-          a href=edit_hour_path(h)
-            span.glyphicon.glyphicon-edit
-        td =link_to h, data: {:confirm => 'Are you sure?'}, :method => :delete do 
-          span.glyphicon.glyphicon-remove-circle
-        
+        th.col-sm-1 #
+        th.col-sm-3 Project
+        th.col-sm-1 start
+        th.col-sm-1 end
+        th.col-sm-1 spent
+        th.col-sm-3 description
+        th 
+        th 
+    tbody
+      - table[:hours].each do |h|
+        tr
+          td =h[:id]
+          td =h[:project]
+          td =h[:start_time].strftime("%H:%M")
+          td =h[:end_time].strftime("%H:%M") if h[:end_time]
+          td =humanize( h[:delta] ) if h[:delta]
+          td =h[:description]
+          td 
+            a href=edit_hour_path(h[:id])
+              span.glyphicon.glyphicon-edit
+          td =link_to hour_path(h[:id]), data: {:confirm => 'Are you sure?'}, :method => :delete do 
+            span.glyphicon.glyphicon-remove-circle
+
+
+          

@@ -5,19 +5,59 @@ class HoursController < ApplicationController
 
 	def index
 		if signed_in?
-			@hours = current_user.hours
+
+			# get all the users hours, sorted
+			@hours = current_user.hours.order(start_time: :desc)
+
+			# hash for the template with all the hours grouped into days
+			@days = {}
+
+			@hours.each do |h|
+				
+				# convert hour into hash, so i can add custom properties
+				# this is probably the long way around... 
+				@b = {
+					id: h.id,
+					project: h.project,
+					start_time: h.start_time,
+					end_time: h.end_time,
+					delta: h.end_time ? h.end_time - h.start_time : 0,
+					description: h.description
+				}
+
+				# init the new hash
+				@days[ h.start_time.to_date ] ||= { hours: [], total: 0 }
+				# push the hour on the hash
+				@days[ h.start_time.to_date ][ :hours ] << @b
+				# add tht total time
+				@days[ h.start_time.to_date ][ :total ] += @b[:delta]
+			end
+
 			render :index
 		else
 			render 'sessions/new'
 		end
 	end
 
+	# GET /hours/projects
+	def projects 
+		puts "\n\n\n\n\n"
+
+		@projects = current_user.projects
+
+		if( params[:id] )
+			@projects = @projects.where( "projects.id" => params[:id] ) 
+		else
+			if( params[:q] )
+				@projects = @projects.where( "projects.name LIKE ?", "%#{params[:q]}%" ) 
+			end
+		end
+
+	end
+
   # GET /hours/new
   def new
     @hour = Hour.new
-
-
-
   end
 
   # GET /hours/1/edit

@@ -27,6 +27,13 @@ html
                 =link_to t('.sign_out'), sign_out_path, method: :delete
               - else
                 =link_to t('.sign_in'), sign_in_path
+            li
+              a href=new_hour_path
+                'New hour
+            li
+              a href=root_path
+                'Overview
+
             / li
             /   a href="#"  Dashboard
             / li
@@ -39,12 +46,12 @@ html
           /   input.form-control placeholder="Search..." type="text" /
     .container-fluid
       .row
-        .col-sm-3.col-md-2.sidebar
-          ul.nav.nav-sidebar
-            li.active
-              a href="#" 
-                | Overview
-                span.sr-only (current)
+        / .col-sm-3.col-md-2.sidebar
+        /   ul.nav.nav-sidebar
+        /     li.active
+        /       a href="#" 
+        /         | Overview
+        /         span.sr-only (current)
             / li
             /   a href="#"  Reports
             / li
@@ -69,7 +76,8 @@ html
           /     a href=""  One more nav
           /   li
           /     a href=""  Another nav item
-        .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+        / .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+        .col-sm-12.col-md-12
           - flash.each do |key, value|
             .alert.alert-info.alert-dismissible role="alert" 
               button.close type="button" data-dismiss="alert" aria-label="Close"
