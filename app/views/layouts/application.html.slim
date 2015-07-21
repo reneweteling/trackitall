@@ -22,11 +22,11 @@ html
           a.navbar-brand href="/"  Track it all
         #navbar.navbar-collapse.collapse
           ul.nav.navbar-nav.navbar-right
-            li
-              - if signed_in?
-                =link_to t('.sign_out'), sign_out_path, method: :delete
-              - else
-                =link_to t('.sign_in'), sign_in_path
+            / li
+            /   - if signed_in?
+            /     =link_to t('.sign_out'), sign_out_path, method: :delete
+            /   - else
+            /     =link_to t('.sign_in'), sign_in_path
             li
               a href=new_hour_path
                 'New hour

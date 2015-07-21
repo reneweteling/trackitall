@@ -1,7 +1,7 @@
 class HoursController < ApplicationController
 	
 	before_action :set_hour, only: [:show, :edit, :update, :destroy]
-	before_action :require_login
+	
 
 	def index
 		if signed_in?

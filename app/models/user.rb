@@ -1,7 +1,5 @@
 class User < ActiveRecord::Base
-	include Clearance::User
-
-  # Include default devise modules. Others available are:
+	# Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   
   belongs_to :address

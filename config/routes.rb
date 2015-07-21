@@ -6,9 +6,6 @@ Rails.application.routes.draw do
   resources :users
 	get 'hours/projects' => 'hours#projects'
   resources :hours
-	root 'hours#index'
-
-
-
-
+	root 'home#index'
+  
 end
