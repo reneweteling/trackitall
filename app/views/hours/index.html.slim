@@ -1,38 +1,38 @@
 h2 Hours
 
-- @days.each do |day, table|
+.row
+  .col-sm-5.col-md-4.col-lg-3
+    =render "form"
+  .col-sm-7.col-md-8.col-lg-9
+    - @days.each do |day, table|
   
-  b 
-    =day 
-  '&nbsp;
-  i
-    =humanize( table[:total] )
+      b =day 
+      '&nbsp;
+      i =humanize( table[:total] )
 
-  table.table
-    thead
-      tr
-        th.col-sm-1 #
-        th.col-sm-3 Project
-        th.col-sm-1 start
-        th.col-sm-1 end
-        th.col-sm-1 spent
-        th.col-sm-3 description
-        th 
-        th 
-    tbody
-      - table[:hours].each do |h|
-        tr
-          td =h[:id]
-          td =h[:project]
-          td =h[:start_time].strftime("%H:%M")
-          td =h[:end_time].strftime("%H:%M") if h[:end_time]
-          td =humanize( h[:delta] ) if h[:delta]
-          td =h[:description]
-          td 
-            a href=edit_hour_path(h[:id])
-              span.glyphicon.glyphicon-edit
-          td =link_to hour_path(h[:id]), data: {:confirm => 'Are you sure?'}, :method => :delete do 
-            span.glyphicon.glyphicon-remove-circle
+      table.table
+        thead
+          tr
+            th.col-sm-1 #
+            th.col-sm-3 Project
+            th.col-sm-2 date
+            th.col-sm-2 spent
+            th.col-sm-3 description
+            th.col-sm-1
+        tbody
+          - table[:hours].each do |h|
+            tr
+              td =h[:id]
+              td =h[:project]
+              td =l h[:date]
+              td =humanize( h[:duration] )
+              td =h[:description]
+              td 
+                a href=edit_hour_path(h[:id])
+                  span.glyphicon.glyphicon-edit
+                '&nbsp
+                =link_to hour_path(h[:id]), data: {:confirm => 'Are you sure?'}, :method => :delete do 
+                  span.glyphicon.glyphicon-remove-circle
 
-
-          
+javascript:
+  $('#hour_duration_human').focus();

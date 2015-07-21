@@ -1,0 +1,6 @@
+if( '<%= @redirect %>' != '' ){
+  document.location.href = '<%= @redirect %>';
+}else{
+  $form = $('<%=j render partial: "form.html.slim" %>');
+  attachHandlers( $( '#' + $form.attr('id') ).html( $form.html() ) );
+}

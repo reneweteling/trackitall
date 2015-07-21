@@ -1,0 +1,8 @@
+= bootstrap_form_for @hour, layout: :vertical, remote: true, :html => {:id => 'hour_form'} do |f|
+  = f.text_field :duration_human, hide_label: true, placeholder: 'Duration ( 1h / 1:50 )'
+  = f.collection_select :hourtype_id, current_user.hourtypes, :id, :name, { hide_label: true }, { class: 'select2' }
+  = f.text_field :project_id, { hide_label: true, class: 'select2remote', 'data-remote' => '/hours/projects.json', placeholder: 'Search project' }
+  = f.text_field :date, { hide_label: true, class: 'datepicker' }
+  = f.text_area :description, { hide_label: true, maxlength: 256, placeholder: 'Description' }
+  = f.form_group
+    = f.submit "Save"

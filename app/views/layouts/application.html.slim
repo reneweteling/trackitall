@@ -7,8 +7,8 @@ html
     meta content="" name="description" /
     meta content="" name="author" /
     meta charset="utf-8" /
-    = stylesheet_link_tag    "admin", :media => "all"
-    = javascript_include_tag "admin"
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
     = csrf_meta_tags
   body
     nav.navbar.navbar-inverse.navbar-fixed-top
@@ -34,49 +34,9 @@ html
               a href=root_path
                 'Overview
 
-            / li
-            /   a href="#"  Dashboard
-            / li
-            /   a href="#"  Settings
-            / li
-            /   a href="#"  Profile
-            / li
-            /   a href="#"  Help
-          / form.navbar-form.navbar-right
-          /   input.form-control placeholder="Search..." type="text" /
     .container-fluid
       .row
-        / .col-sm-3.col-md-2.sidebar
-        /   ul.nav.nav-sidebar
-        /     li.active
-        /       a href="#" 
-        /         | Overview
-        /         span.sr-only (current)
-            / li
-            /   a href="#"  Reports
-            / li
-            /   a href="#"  Analytics
-            / li
-            /   a href="#"  Export
-          / ul.nav.nav-sidebar
-          /   li
-          /     a href=""  Nav item
-          /   li
-          /     a href=""  Nav item again
-          /   li
-          /     a href=""  One more nav
-          /   li
-          /     a href=""  Another nav item
-          /   li
-          /     a href=""  More navigation
-          / ul.nav.nav-sidebar
-          /   li
-          /     a href=""  Nav item again
-          /   li
-          /     a href=""  One more nav
-          /   li
-          /     a href=""  Another nav item
-        / .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+        
         .col-sm-12.col-md-12
           - flash.each do |key, value|
             .alert.alert-info.alert-dismissible role="alert" 

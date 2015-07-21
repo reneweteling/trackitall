@@ -9,5 +9,11 @@ class ApplicationController < ActionController::Base
 	end
 
 
+	# def current_user
+	# 	User.find( 1 )
+	# end
+
+
+
 
 end

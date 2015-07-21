@@ -6,7 +6,7 @@ module DefaultName
   included do
 
 		def to_s()
-			self.try(:company) ? "#{self.company.name} - #{self.name}" : self.name
+			self.try(:company) ? "#{self.name} (#{self.company.name})" : self.name
 		end
 
   end
