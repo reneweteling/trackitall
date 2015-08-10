@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
+  skip_before_action :authenticate_user!
+
   def create
-    @user = User.find_or_create_from_auth_hash(auth_hash)
-    self.current_user = @user
+    sign_in User.find_or_create_from_auth_hash(auth_hash)
     redirect_to '/'
   end
 

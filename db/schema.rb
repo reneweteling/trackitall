@@ -127,6 +127,21 @@ ActiveRecord::Schema.define(version: 20150316143820) do
   add_index "invoices", ["template_id"], name: "index_invoices_on_template_id", using: :btree
   add_index "invoices", ["user_id"], name: "index_invoices_on_user_id", using: :btree
 
+  create_table "oauths", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "token"
+    t.json     "raw"
+    t.datetime "login_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "oauths", ["provider"], name: "index_oauths_on_provider", using: :btree
+  add_index "oauths", ["uid"], name: "index_oauths_on_uid", using: :btree
+  add_index "oauths", ["user_id"], name: "index_oauths_on_user_id", using: :btree
+
   create_table "prices", force: :cascade do |t|
     t.integer  "company_id"
     t.string   "name",          limit: 256
@@ -172,42 +187,53 @@ ActiveRecord::Schema.define(version: 20150316143820) do
   create_table "users", force: :cascade do |t|
     t.integer  "address_id"
     t.integer  "invoice_address_id"
-    t.string   "name",               limit: 256
-    t.string   "firstname",          limit: 256
-    t.string   "lastname",           limit: 256
-    t.string   "email",              limit: 255, default: "",    null: false
-    t.string   "encrypted_password", limit: 128
-    t.string   "confirmation_token", limit: 128
-    t.string   "remember_token",     limit: 128
-    t.boolean  "admin",                          default: false, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "first_name",             limit: 256
+    t.string   "last_name",              limit: 256
+    t.string   "email",                              default: "", null: false
+    t.string   "encrypted_password",                 default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                      default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.integer  "failed_attempts",                    default: 0,  null: false
+    t.string   "unlock_token"
+    t.datetime "locked_at"
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
   add_index "users", ["address_id"], name: "index_users_on_address_id", using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["invoice_address_id"], name: "index_users_on_invoice_address_id", using: :btree
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
-
-
-  # add_foreign_key "companies", "addresses"
-  # add_foreign_key "components", "invoices"
-  # add_foreign_key "components", "prices"
-  # add_foreign_key "hours", "hourtypes"
-  # add_foreign_key "hours", "projects"
-  # add_foreign_key "hours", "users"
-  # add_foreign_key "hourtypes", "companies"
-  # add_foreign_key "hourtypes", "prices"
-  # add_foreign_key "invoices", "companies"
-  # add_foreign_key "invoices", "projects"
-  # add_foreign_key "invoices", "templates"
-  # add_foreign_key "invoices", "users"
-  # add_foreign_key "prices", "companies"
-  # add_foreign_key "projects", "companies"
-  # add_foreign_key "templates", "companies"
-  # add_foreign_key "usercompanies", "companies"
-  # add_foreign_key "usercompanies", "users"
-  # add_foreign_key "users", "addresses"
-  # add_foreign_key "users", "addresses", column: "invoice_address_id"
+  add_foreign_key "companies", "addresses"
+  add_foreign_key "components", "invoices"
+  add_foreign_key "components", "prices"
+  add_foreign_key "hours", "hourtypes"
+  add_foreign_key "hours", "projects"
+  add_foreign_key "hours", "users"
+  add_foreign_key "hourtypes", "companies"
+  add_foreign_key "hourtypes", "prices"
+  add_foreign_key "invoices", "companies"
+  add_foreign_key "invoices", "projects"
+  add_foreign_key "invoices", "templates"
+  add_foreign_key "invoices", "users"
+  add_foreign_key "prices", "companies"
+  add_foreign_key "projects", "companies"
+  add_foreign_key "templates", "companies"
+  add_foreign_key "usercompanies", "companies"
+  add_foreign_key "usercompanies", "users"
+  add_foreign_key "users", "addresses"
+  add_foreign_key "users", "addresses", column: "invoice_address_id"
 end

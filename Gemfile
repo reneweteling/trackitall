@@ -10,7 +10,6 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 
 gem 'active_model_serializers'
-gem 'slim-rails'
 gem 'carrierwave'
 gem 'activeadmin', github: 'activeadmin'
 gem 'simple_form'
@@ -18,6 +17,7 @@ gem 'devise'
 gem 'slim-rails'
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'oauth2'
 
 
 source 'https://rails-assets.org' do
@@ -29,7 +29,7 @@ end
 
 group :production do
 	# for heroku
-	gem 'puma'
+	# gem 'puma'
 	gem 'rails_12factor'
 end
 
